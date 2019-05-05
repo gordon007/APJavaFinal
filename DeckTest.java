@@ -6,15 +6,26 @@ class DeckTest {
 
 	@Test
 	void testDeck() {
+		//tests parameterized constructor
 		String[] ranks = {"jack", "queen", "king"};
 		String[] suits = {"spade", "club" , "heart", "diamond"};
 		int[] values = {11,12,13};
 		Deck test1 = new Deck(ranks,suits,values);
 		assertNotNull(test1);
 		
+		//tests failsafe
 		String[] ranks2 = {"jack", "queen"};
 		Deck test2 = new Deck(ranks2,suits,values);
 		assertNotNull(test2);
+		
+		//tests default deck
+		Deck test3 = new Deck(true);
+		assertNotNull(test3);
+		
+		//tests empty deck
+		Deck test4 = new Deck(false);
+		assertNotNull(test4);
+		assertEquals(true,test4.isEmpty());
 	}
 
 	@Test
@@ -66,9 +77,7 @@ class DeckTest {
 		{
 			test1.deal();
 		}
-		test1.shuffle();
-		assertEquals(0,test1.discards.size());
-		assertNotNull(test1.deal());
+		assertNull(test1.deal());
 	}
 	
 }
