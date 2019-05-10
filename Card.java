@@ -1,3 +1,4 @@
+import java.awt.Image;
 
 public class Card 
 {
@@ -5,12 +6,14 @@ public class Card
 	String rank;
 	String suit;
 	int value;
+	Image face;
 	
-	public Card(String _rank, String _suit, int _value )
+	public Card(String _rank, String _suit, int _value, Image _face)
 	{
 		rank = _rank;
 		suit = _suit;
 		value = _value;
+		face = _face;
 	}
 	
 	public String getRank()
@@ -42,5 +45,10 @@ public class Card
 	public String toString()
 	{
 		return rank + " of " + suit + " (point value = " + value + ")";
+	}
+	
+	public Image getFace()
+	{
+		return face;
 	}
 }
